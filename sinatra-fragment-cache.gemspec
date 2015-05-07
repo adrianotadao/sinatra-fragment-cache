@@ -1,6 +1,8 @@
+require File.expand_path('../lib/sinatra_fragment_cache/version', __FILE__)
+
 Gem::Specification.new do |s|
   s.name        = 'sinatra_fragment_cache'
-  s.version     = '0.0.1'
+  s.version     = SinatraFragmentCache::VERSION
   s.date        = '2015-05-06'
   s.licenses    = ['MIT']
   s.summary     = "Sinatra Fragment Cache!"
@@ -11,4 +13,6 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/adrianotadao/sinatra-fragment-cache'
 
   s.add_dependency 'sinatra', '~>1.4'
+
+  s.add_development_dependency 'minitest', '~>5.5'
 end
