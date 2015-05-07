@@ -15,4 +15,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'sinatra', '~>1.4'
 
   s.add_development_dependency 'minitest', '~>5.5'
+  s.add_development_dependency 'sinatra-contrib'
 end

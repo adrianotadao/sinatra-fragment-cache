@@ -5,9 +5,9 @@ module Sinatra
     def fragment_cache(path, options = {}, &block)
       @path = path
       @options = options
-      @cache_path = "#{ FileUtils.pwd }/tmp/cache/#{ path }/index.cache"
+      @cache_path = "#{ settings.fragment_cache_output_dir }/#{ path }/index.cache"
 
-      return block.call unless settings.cache_enabled
+      return block.call unless settings.fragment_cache_enabled
 
       @_out_buf = []
       if cache = read_fragment
@@ -40,12 +40,15 @@ module Sinatra
     end
 
     def create_path!
-      FileUtils.mkdir_p "tmp/cache/#{ path }"
+      FileUtils.mkdir_p "#{ settings.fragment_cache_output_dir }/#{ path }"
     end
 
     def self.registered(app)
       app.extend Sinatra
       app.helpers FragmentCache
+
+      app.set :fragment_cache_enabled, true
+      app.set :fragment_cache_output_dir, lambda { "#{ app.root }/tmp/cache" }
     end
   end
 end
