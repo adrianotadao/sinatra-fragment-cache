@@ -5,7 +5,8 @@ module Sinatra
     def fragment_cache(path, options = {}, &block)
       @path = path
       @options = options
-      @cache_path = "#{ settings.fragment_cache_output_dir }/#{ path }/index.cache"
+      file_name = options[:file_name] || 'index.cache'
+      @cache_path = "#{ settings.fragment_cache_output_dir }/#{ path }/#{ file_name }"
 
       return block.call unless settings.fragment_cache_enabled
 

@@ -5,11 +5,11 @@ Gem::Specification.new do |s|
   s.version     = SinatraFragmentCache::VERSION
   s.date        = '2015-05-06'
   s.licenses    = ['MIT']
-  s.summary     = "Sinatra Fragment Cache!"
-  s.description = "Creating a fragment cache with sinatra!"
-  s.authors     = ["Adriano Tadao Sabadini Matsumoto"]
+  s.summary     = 'Sinatra Fragment Cache!'
+  s.description = 'Creating a fragment cache with sinatra!'
+  s.authors     = ['Adriano Tadao Sabadini Matsumoto']
   s.email       = 'drianotadao@gmail.com '
-  s.files       = ["lib/sinatra_fragment_cache.rb"]
+  s.files       = ['lib/sinatra_fragment_cache.rb']
   s.homepage    = 'https://github.com/adrianotadao/sinatra-fragment-cache'
 
   s.add_dependency 'sinatra', '~>1.4'
