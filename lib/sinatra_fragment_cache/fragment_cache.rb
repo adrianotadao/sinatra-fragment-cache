@@ -23,25 +23,21 @@ module Sinatra
     def read_fragment
       now = Time.now
       if File.file?(cache_path)
-        if options[:expires]
+        if options[:expires_in]
           (current_age = (now - File.mtime(cache_path)).to_i / 60)
-          return false if (current_age > options[:expires])
+          return false if (current_age > options[:expires_in])
         end
         return File.read(cache_path)
       end
       false
     end
 
-    def write_fragment(buf)
-      create_path!
-      f = File.new(cache_path, "w+")
-      f.write(buf)
-      f.close
-      buf
-    end
-
-    def create_path!
+    def write_fragment(buffer)
       FileUtils.mkdir_p "#{ settings.fragment_cache_output_dir }/#{ path }"
+      file = File.new(cache_path, 'w+')
+      file.write(buffer)
+      file.close
+      buffer
     end
 
     def self.registered(app)
