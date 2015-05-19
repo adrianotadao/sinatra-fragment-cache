@@ -114,3 +114,7 @@ module DummyApp < Sinatra::Base
   end
 end
 ```
+
+## License
+
+[MIT](https://github.com/adrianotadao/sinatra-fragment-cache/blob/master/LICENSE)
