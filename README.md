@@ -1,6 +1,6 @@
 # Sinatra::FragmentCache
 
-This gem is to be used to generate cache similar to FragmentCache. You can pass the arguments: a block of code, the cache key and the minutos that the caches should expires.
+This gem is to be used to generate cache similar to FragmentCache. You need to pass the arguments: a block of code, the cache key and the minutos that the caches should expires.
 
 ## Requirements
 
@@ -48,7 +48,7 @@ end
 
 ### Options of cache generation
 
-You can pass these options to call of cache generation:
+You can pass these options on the caller of the cache generator:
 
 **expires_in**: Should be an `Integer`. It is the time in minutes of cache expiration.
 
