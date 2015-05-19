@@ -9,10 +9,15 @@ Gem::Specification.new do |s|
   s.description = 'Creating a fragment cache with sinatra!'
   s.authors     = ['Adriano Tadao Sabadini Matsumoto']
   s.email       = 'drianotadao@gmail.com '
-  s.files       = ['lib/sinatra_fragment_cache.rb']
+  s.files       = [
+    'lib/sinatra_fragment_cache.rb',
+    'lib/sinatra_fragment_cache/fragment_cache.rb',
+    'lib/sinatra_fragment_cache/version.rb'
+  ]
   s.homepage    = 'https://github.com/adrianotadao/sinatra-fragment-cache'
 
   s.add_dependency 'sinatra', '~>1.4'
 
   s.add_development_dependency 'minitest', '~>5.5'
+  s.add_development_dependency 'rubygems-tasks', '0.2.4'
 end
