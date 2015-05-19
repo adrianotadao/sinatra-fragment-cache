@@ -2,6 +2,7 @@ require File.expand_path '../test_helper.rb', __FILE__
 
 describe Sinatra::FragmentCache do
   before do
+    app.set :fragment_cache_enabled, true
     app.set :fragment_cache_output_dir, "#{ FileUtils.pwd }/test/dummy/tmp/cache"
   end
 
@@ -21,6 +22,18 @@ describe Sinatra::FragmentCache do
 
   it "When the fragment cache_path is changed, the path should be created on the same" do
     app.set :fragment_cache_output_dir, "#{ FileUtils.pwd }/public/cache"
+    get '/', { file_name: 'index.html' }
+    File.file?("#{ app.fragment_cache_output_dir }/cache_key/index.html").must_equal true
+  end
+
+  it "When the option fragment_cache_enabled is false, the cache should not exist" do
+    app.set :fragment_cache_enabled, false
+    get '/', { file_name: 'index.html' }
+    File.file?("#{ app.fragment_cache_output_dir }/cache_key/index.html").must_equal false
+  end
+
+  it "When the option fragment_cache_enabled is true, the cache should exist" do
+    app.set :fragment_cache_enabled, true
     get '/', { file_name: 'index.html' }
     File.file?("#{ app.fragment_cache_output_dir }/cache_key/index.html").must_equal true
   end
