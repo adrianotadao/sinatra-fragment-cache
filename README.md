@@ -17,14 +17,7 @@ gem 'sinatra', '~1.4'
 gem 'sinatra_fragment_cache', '0.0.1'
 ```
 
-### Options
-
-You can set these options:
-
-```
-expires_in (Integer): time in minutes of cache expiration.
-file_name (String): is the name of cache file
-```
+### Gem options
 
 #### Default
 
@@ -53,7 +46,14 @@ module DummyApp < Sinatra::Base
 end
 ```
 
-### Sending the cache options
+### Options of cache generation
+
+You can pass these options to call of cache generation:
+
+**expires_in**: Should be an `Integer`. It is the time in minutes of cache expiration.
+
+**file_name**: Should be a `String`. It is the name that the cache will be created.
+
 
 ```ruby
 require 'rubygems'
@@ -64,7 +64,7 @@ module DummyApp < Sinatra::Base
   register Sinatra::FragmentCache
 
   get '/' do
-    fragment_cache('cache_key') do
+    fragment_cache('cache_key', file_name: 'index.json', expires_in: 60) do
       { foo: 'Bar' }.to_json
     end
   end
@@ -86,7 +86,7 @@ module DummyApp < Sinatra::Base
   end
 
   get '/' do
-    fragment_cache('cache_key', file_name: 'index.json', expires_in: 60) do
+    fragment_cache('cache_key') do
       { foo: 'Bar' }.to_json
     end
   end
